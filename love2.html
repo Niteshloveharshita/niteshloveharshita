@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Marry Me? 💍</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        font-family: 'Segoe UI', sans-serif;
+        text-align: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+    }
+    h1 {
+        margin-top: 80px;
+        font-size: 40px;
+        color: #ff4f81;
+        animation: fadeIn 1.2s ease-in-out;
+    }
+    p {
+        font-size: 18px;
+        color: #555;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .btn {
+        padding: 15px 35px;
+        font-size: 18px;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        margin: 20px;
+        transition: 0.3s ease;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    }
+    .yes-btn {
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        color: white;
+    }
+    .yes-btn:hover {
+        transform: scale(1.1);
+    }
+    .no-btn {
+        background: linear-gradient(135deg, #8e9eab, #eef2f3);
+        color: #333;
+        position: absolute;
+    }
+
+    /* Heart style and animation */
+    .heart {
+        fill: red;
+        position: absolute;
+        width: 30px;
+        animation: pulse 1s ease infinite, floatUp 6s linear infinite;
+        opacity: 0.8;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.3); }
+        100% { transform: scale(1); }
+    }
+    @keyframes floatUp {
+        0% { transform: translateY(100vh); opacity: 0; }
+        20% { opacity: 1; }
+        100% { transform: translateY(-10vh); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<h1>💖 Will You Marry Me? 💖</h1>
+<p>You have only one choice... choose wisely 😉</p>
+
+<button class="btn yes-btn" onclick="sayYes()">Yes 💍</button>
+<button class="btn no-btn" id="noBtn" onmouseover="moveNo()">No 😜</button>
+
+<!-- SVG Heart template for floating hearts -->
+<svg style="display:none;" id="heartTemplate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 29.6">
+    <path d="M23.6,0c-3.4,0-6.4,2.1-7.6,5.1C14.8,2.1,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.1,16,21.2,16,21.2s16-12.1,16-21.2
+    C32,3.8,28.2,0,23.6,0z"/>
+</svg>
+
+<script>
+let noBtn = document.getElementById("noBtn");
+
+function sayYes() {
+    window.location.href = "love3.html"; // Change to your next page
+}
+
+function moveNo() {
+    let x = Math.floor(Math.random() * (window.innerWidth - noBtn.clientWidth - 20));
+    let y = Math.floor(Math.random() * (window.innerHeight - noBtn.clientHeight - 20));
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+// Floating hearts generator
+function createHeart() {
+    const heartSVG = document.getElementById("heartTemplate").cloneNode(true);
+    heartSVG.style.display = "block";
+    heartSVG.classList.add("heart");
+    heartSVG.style.left = Math.random() * window.innerWidth + "px";
+    heartSVG.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heartSVG);
+
+    setTimeout(() => { heartSVG.remove(); }, 7000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>

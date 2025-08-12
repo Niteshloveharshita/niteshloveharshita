@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Romantic Surprise</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom right, #ff99cc, #660033);
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Plane styling */
+    .plane {
+        position: absolute;
+        top: calc(10% * var(--row));
+        left: -200px;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        animation: fly 4s linear forwards;
+        color: white;
+        font-weight: bold;
+    }
+
+    .plane img {
+        width: 50px;
+        margin-right: 10px;
+    }
+
+    @keyframes fly {
+        to { left: 110%; }
+    }
+
+    /* Big I LOVE YOU */
+    .big-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 80px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 20px red, 0 0 40px pink;
+        opacity: 0;
+        animation: bigLove 3s ease forwards;
+    }
+
+    @keyframes bigLove {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+        100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    /* Picture grid */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        padding: 20px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        animation: showGallery 1.5s ease forwards;
+    }
+
+    .gallery img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(255,255,255,0.7);
+        transition: transform 0.5s;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.1);
+    }
+
+    @keyframes showGallery {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Planes -->
+<div id="planes"></div>
+
+<!-- Big I LOVE YOU -->
+<div id="bigLove" class="big-text">I LOVE YOU ❤️</div>
+
+<!-- Picture Gallery -->
+<div id="gallery" class="gallery">
+    <!-- Replace these with your own pictures -->
+   <img src="IMG_5848.PNG" alt="pic2">
+  <img src="IMG_5849.PNG" alt="pic3">
+  <img src="IMG_5850.PNG" alt="pic5">
+   <img src="IMG_5851.PNG" alt="pic6">
+  <img src="IMG_5853.PNG" alt="pic8">
+  <img src="IMG_5854.PNG" alt="pic9">
+   <img src="IMG_5855.PNG" alt="pic10">
+  <img src="IMG_5856.PNG" alt="pic11">
+  <img src="IMG_5857.PNG" alt="pic12">
+  <img src="IMG_5858.PNG" alt="pic13">
+   <img src="IMG_5859.PNG" alt="pic14">
+  <img src="IMG_5860.PNG" alt="pic15">
+  <img src="IMG_5861.PNG" alt="pic16">
+  <img src="IMG_5862.PNG" alt="pic17">
+   <img src="IMG_5863.PNG" alt="pic18">
+  <img src="IMG_5864.PNG" alt="pic19">
+  <img src="IMG_5865.PNG" alt="pic20">
+  <img src="IMG_5866.PNG" alt="pic21">
+   <img src="IMG_5867.PNG" alt="pic22">
+  <img src="IMG_5868.PNG" alt="pic23">
+  <img src="IMG_5869.PNG" alt="pic24">
+  <img src="IMG_5870.PNG" alt="pic25">
+   <img src="IMG_5871.PNG" alt="pic26">
+  <img src="IMG_5872.PNG" alt="pic27">
+  <img src="IMG_5873.PNG" alt="pic28">
+</div>
+
+</div>
+
+<script>
+    const planesContainer = document.getElementById('planes');
+
+    // Create multiple planes
+    for (let i = 0; i < 5; i++) {
+        const plane = document.createElement('div');
+        plane.classList.add('plane');
+        plane.style.setProperty('--row', i + 1);
+        plane.innerHTML = `<img src="https://cdn-icons-png.flaticon.com/512/3448/3448599.png"> I LOVE YOU ❤️`;
+        planesContainer.appendChild(plane);
+    }
+
+    // Show big I LOVE YOU after planes
+    setTimeout(() => {
+        document.getElementById('bigLove').style.animationPlayState = 'running';
+    }, 4000);
+
+    // Show pictures after big text
+    setTimeout(() => {
+        document.getElementById('gallery').style.opacity = '1';
+    }, 7000);
+</script>
+
+</body>
+</html>

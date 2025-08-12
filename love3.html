@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Page</title>
+<style>
+    body {
+        background: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: cursive;
+        color: white;
+        margin: 0;
+    }
+
+    .names {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 40px;
+        position: absolute;
+        top: 20px;
+    }
+
+    .name {
+        font-size: 2em;
+        text-shadow: 0 0 10px #ff3366, 0 0 20px #ff6699, 0 0 30px #ff99cc;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 10px #ff3366, 0 0 20px #ff6699, 0 0 30px #ff99cc; }
+        to { text-shadow: 0 0 20px #ff6699, 0 0 40px #ff99cc, 0 0 60px #ffe6f0; }
+    }
+
+    .heart {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        background: red;
+        transform: rotate(-45deg);
+        animation: pulse 1.2s ease-in-out infinite, float 3s ease-in-out infinite;
+        box-shadow: 0 0 30px rgba(255, 0, 80, 0.8), 0 0 60px rgba(255, 0, 80, 0.6);
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: red;
+        border-radius: 50%;
+        box-shadow: 0 0 30px rgba(255, 0, 80, 0.8), 0 0 60px rgba(255, 0, 80, 0.6);
+    }
+
+    .heart::before {
+        top: -60px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: 60px;
+        top: 0;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: rotate(-45deg) scale(1);
+            box-shadow: 0 0 30px rgba(255, 0, 80, 0.8), 0 0 60px rgba(255, 0, 80, 0.6);
+        }
+        50% {
+            transform: rotate(-45deg) scale(1.2);
+            box-shadow: 0 0 50px rgba(255, 0, 120, 1), 0 0 90px rgba(255, 0, 120, 0.9);
+        }
+    }
+
+    @keyframes float {
+        0%, 100% { transform: rotate(-45deg) translateY(0); }
+        50% { transform: rotate(-45deg) translateY(-10px); }
+    }
+
+    .love-button {
+        margin-top: 40px;
+        padding: 15px 40px;
+        font-size: 1.5em;
+        background: linear-gradient(45deg, #ff3366, #ff99cc);
+        border: none;
+        border-radius: 30px;
+        color: white;
+        cursor: pointer;
+        text-shadow: 0 0 10px #fff;
+        box-shadow: 0 0 20px #ff6699;
+        animation: glowButton 1.5s ease-in-out infinite alternate;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .love-button:hover {
+        transform: scale(1.1);
+    }
+
+    @keyframes glowButton {
+        from { box-shadow: 0 0 10px #ff6699, 0 0 20px #ff99cc; }
+        to { box-shadow: 0 0 20px #ff99cc, 0 0 40px #ffe6f0; }
+    }
+
+</style>
+</head>
+<body>
+
+<div class="names">
+    <div class="name">💖 Nitesh</div>
+    <div class="name">Harshita 💖</div>
+</div>
+
+<div class="heart"></div>
+
+<button class="love-button" onclick="window.location.href='love4.html'">Love Life ❤️</button>
+
+</body>
+</html>
